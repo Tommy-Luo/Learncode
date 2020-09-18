@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/to2"
+        android:title="TWO" />
+    <item
+        android:id="@+id/to10"
+        android:title="TEN" />
+    <item
+        android:id="@+id/to8"
+        android:title="EIGHT">
+
+    </item>
+    <item
+        android:id="@+id/to16"
+        android:title="SIXTEEN">
+
+    </item>
+    <item
+        android:id="@+id/exit"
+        android:title="RET" />
+</menu>
