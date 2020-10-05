@@ -3,20 +3,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="100dp"/>
 
     <TextView
+        android:id="@+id/msg"
         android:layout_width="match_parent"
-        android:layout_height="50dp"/>
+        android:layout_height="150dp"
+        android:textSize="50sp"
+        />
     <GridLayout
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:columnCount="4"
         android:rowCount="4"
         android:orientation="horizontal">
         <Button android:text="C"
+            android:id="@+id/btn_clean"
             android:textSize="30sp"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -24,6 +26,7 @@
             android:layout_rowWeight="1"
             android:background="@drawable/boder"/>
         <Button android:text="√"
+            android:id="@+id/btn_gen"
             android:textSize="30sp"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -31,6 +34,7 @@
             android:layout_rowWeight="1"
             android:background="@drawable/boder"/>
         <Button android:text="DEL"
+            android:id="@+id/btn_delete"
             android:textSize="30sp"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -38,6 +42,7 @@
             android:layout_rowWeight="1"
             android:background="@drawable/boder"/>
         <Button android:text="/"
+            android:id="@+id/btn_chu"
             android:textSize="30sp"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -45,6 +50,7 @@
             android:layout_rowWeight="1"
             android:background="@drawable/boder"/>
         <Button android:text="%"
+            android:id="@+id/btn_yu"
             android:textSize="30sp"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -52,6 +58,7 @@
             android:layout_rowWeight="1"
             android:background="@drawable/boder"/>
         <Button android:text="("
+            android:id="@+id/btn_zuokuo"
             android:textSize="30sp"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -59,6 +66,7 @@
             android:layout_rowWeight="1"
             android:background="@drawable/boder"/>
         <Button android:text=")"
+            android:id="@+id/btn_youkuo"
             android:textSize="30sp"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -76,6 +84,7 @@
             />
 
         <Button android:text="7"
+            android:id="@+id/btn_7"
             android:textSize="30sp"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -83,6 +92,7 @@
             android:layout_rowWeight="1"
             android:background="@drawable/boder"/>
         <Button android:text="8"
+            android:id="@+id/btn_8"
             android:textSize="30sp"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -90,13 +100,15 @@
             android:layout_rowWeight="1"
             android:background="@drawable/boder"/>
         <Button android:text="9"
+            android:id="@+id/btn_9"
             android:textSize="30sp"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:background="@drawable/boder"/>
-        <Button android:text="X"
+        <Button android:text="x"
+            android:id="@+id/btn_cheng"
             android:textSize="30sp"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -104,6 +116,7 @@
             android:layout_rowWeight="1"
             android:background="@drawable/boder"/>
         <Button android:text="4"
+            android:id="@+id/btn_4"
             android:textSize="30sp"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -111,6 +124,7 @@
             android:layout_rowWeight="1"
             android:background="@drawable/boder"/>
         <Button android:text="5"
+            android:id="@+id/btn_5"
             android:textSize="30sp"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -118,6 +132,7 @@
             android:layout_rowWeight="1"
             android:background="@drawable/boder"/>
         <Button android:text="6"
+            android:id="@+id/btn_6"
             android:textSize="30sp"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -125,6 +140,7 @@
             android:layout_rowWeight="1"
             android:background="@drawable/boder"/>
         <Button android:text="-"
+            android:id="@+id/btn_jian"
             android:textSize="30sp"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -132,6 +148,7 @@
             android:layout_rowWeight="1"
             android:background="@drawable/boder"/>
         <Button android:text="1"
+            android:id="@+id/btn_1"
             android:textSize="30sp"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -139,6 +156,7 @@
             android:layout_rowWeight="1"
             android:background="@drawable/boder"/>
         <Button android:text="2"
+            android:id="@+id/btn_2"
             android:textSize="30sp"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -146,6 +164,7 @@
             android:layout_rowWeight="1"
             android:background="@drawable/boder"/>
         <Button android:text="3"
+            android:id="@+id/btn_3"
             android:textSize="30sp"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -153,6 +172,7 @@
             android:layout_rowWeight="1"
             android:background="@drawable/boder"/>
         <Button android:text="+"
+            android:id="@+id/btn_jia"
             android:textSize="30sp"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -160,6 +180,7 @@
             android:layout_rowWeight="1"
             android:background="@drawable/boder"/>
         <Button android:text="0"
+            android:id="@+id/btn_0"
             android:textSize="30sp"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -169,6 +190,7 @@
             android:background="@drawable/boder"/>
 
         <Button android:text="."
+            android:id="@+id/btn_dian"
             android:textSize="30sp"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -178,7 +200,7 @@
             android:background="@drawable/boder"/>
 
         <Button android:text="CON"
-
+            android:id="@+id/button_con"
             android:textSize="30sp"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -186,6 +208,7 @@
             android:layout_rowWeight="1"
             android:background="@drawable/boder"/>
         <Button android:text="="
+            android:id="@+id/btn_dengyu"
             android:textSize="30sp"
             android:layout_width="0dp"
             android:layout_height="0dp"
