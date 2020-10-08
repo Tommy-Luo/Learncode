@@ -4,9 +4,7 @@
         android:id="@+id/to2"
         android:title="TWO" />
 
-    <item
-        android:id="@+id/to10"
-        android:title="TEN" />
+
     <item
         android:id="@+id/to8"
         android:title="EIGHT">
@@ -18,6 +16,6 @@
 
     </item>
     <item
-        android:id="@+id/exit"
+        android:id="@+id/ret"
         android:title="RET" />
 </menu>

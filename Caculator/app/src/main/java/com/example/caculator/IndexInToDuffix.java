@@ -22,38 +22,33 @@ public class IndexInToDuffix {
             char c = s.charAt(i);  //获取第i个位置的字符
             String m = c + "";
             if (Character.isDigit(c) || c == '.') {
-                if (i == s.length() - 1) {
+                if (i == s.length() - 1) { temp += m;stacka.push(temp); }
+                else
                     temp += m;
-                    stacka.push(temp);
-                } else
-                    //不是第一个位置，要看前一个是不是数字或小数点
-                    //if(Character.isDigit(s.charAt(i-1))||s.charAt(i-1)=='.')
-                    //{
-                    temp += m;
-                //}
-
-                //stacka.push(m);
-            }//如果c是字符，就将他直接放进a栈中
+            }
             else {
                 if (temp != "") {
                     stacka.push(temp);
                     temp = "";
-                }  //这个判断是为了不让括号后紧接着数字的情况出错
-                if (c == '(')
-                    stackb.push(m);
+                }
+                if (c == '(') stackb.push(m);
+
                 else if (c == ')') {
-                    while (!stackb.isEmpty() && !stackb.peek().equals("(")) {
+                    while (!stackb.isEmpty() && !stackb.peek().equals("("))
+                    {
                         String r = stackb.pop();
                         stacka.push(r);
                     }//遇到右括号，输出运算符堆栈中的运算符到操作数堆栈，直到遇到左括号为止
-                    if (stackb.peek().equals("(")) stackb.pop();
+                    if (stackb.peek().equals("("))
+                        stackb.pop();
                 } else  //加减乘除的情况
                 {
                     //首先是加减，他们的优先级低于乘除，只有优先级大于等于栈顶才弹出
                     switch (c) {
                         case '+':
                         case '-':
-                            if ((!stackb.isEmpty()) && hashMap.get(stackb.peek()) > 1) {
+                            if ((!stackb.isEmpty()) && hashMap.get(stackb.peek()) > 1)
+                            {
                                 String t = stackb.pop();
                                 stacka.push(t);
                                 stackb.push(m);
@@ -76,17 +71,21 @@ public class IndexInToDuffix {
         return stacka;
     }
 
-    public static String calc(Stack<String> stacka)//计算逆波兰表达式
+    public static String calc(Stack<String> stacka)
     {
         ArrayList<String> arr = new ArrayList<String>();
         while (!stacka.isEmpty()) {
             String t = stacka.pop();
-            //System.out.println("t="+t);
             arr.add(t);
         }
         ArrayList<String> arr1 = new ArrayList<String>();
+        System.out.println(arr);
+
         for (int i = arr.size() - 1; i >= 0; i--) {
             int j = arr1.size();
+            System.out.println(arr1);
+            System.out.println(j);
+
             switch (arr.get(i)) {
                 case "+":
                     BigDecimal a = new BigDecimal(arr1.remove(j - 2)).add(new BigDecimal(arr1.remove(j - 2)));

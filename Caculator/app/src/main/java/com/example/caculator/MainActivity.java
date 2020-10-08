@@ -1,11 +1,16 @@
 package com.example.caculator;
 
+import android.content.ClipData;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.math.BigInteger;
 
 import static com.example.caculator.IndexInToDuffix.Houzhui;
 
@@ -29,6 +34,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button btn_div;
     private Button btn_left;
     private Button btn_right;
+    private Button btn_area;
+    private Button btn_length;
 
     private Button btn_ac;  //清空
     private Button btn_del;//删除
@@ -38,6 +45,180 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        findViewById(R.id.button_sce).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popupMenu=new PopupMenu(MainActivity.this,view);
+                getMenuInflater().inflate(R.menu.science,popupMenu.getMenu());
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        String str=et_showview.getText().toString();
+                        double value=Double.valueOf(str);
+                        double result=0;
+                        switch (menuItem.getItemId()){
+                            case R.id.sin:
+                                result=Math.sin(Math.toRadians(value));
+                                String resultsin=String.valueOf(result);
+                                et_showview.setText(resultsin);
+                                return true;
+                            case R.id.cos:
+                                result=Math.cos(Math.toRadians(value));
+                                String resultcos=String.valueOf(result);
+                                et_showview.setText(resultcos);
+                                return true;
+                            case R.id.tan:
+                                result=Math.tan(Math.toRadians(value));
+                                String resulttan=String.valueOf(result);
+                                et_showview.setText(resulttan);
+                                return true;
+                            default:
+                                return false;
+
+                        }
+                    }
+                });
+                popupMenu.show();
+            }
+        });
+
+
+
+        findViewById(R.id.button_con).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popupMenu=new PopupMenu(MainActivity.this,view);
+                getMenuInflater().inflate(R.menu.conversion,popupMenu.getMenu());
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        String str=et_showview.getText().toString();
+                        int i = Integer.parseInt(str);
+                        switch (menuItem.getItemId()){
+                            case R.id.to2:
+                                et_showview.setText(Integer.toBinaryString(i));
+                                return true;
+                            case R.id.to8:
+                                et_showview.setText(Integer.toOctalString(i));
+                                return true;
+                            case R.id.to16:
+                                et_showview.setText(Integer.toHexString(i));
+                                return true;
+                            case R.id.ret:
+                                BigInteger j=new BigInteger(str,2);
+                                et_showview.setText(j.toString());
+
+                                return true;
+                            default:
+                                return false;
+
+                        }
+                    }
+                });
+                popupMenu.show();
+            }
+        });
+        findViewById(R.id.btn_area).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popupMenu=new PopupMenu(MainActivity.this,view);
+                getMenuInflater().inflate(R.menu.area,popupMenu.getMenu());
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        String str=et_showview.getText().toString();
+                        double value=Double.valueOf(str);
+                        double result=0;
+                        switch (menuItem.getItemId()){
+                            case R.id.mm3:
+                                result=value*1000;
+                                String resultmm=String.valueOf(result);
+                                et_showview.setText(resultmm);
+
+                                return true;
+                            case R.id.cm3:
+                                result=value;
+                                String resultcm=String.valueOf(result);
+                                et_showview.setText(resultcm);
+
+                                return true;
+                            case R.id.dm3:
+                                result=value/1000;
+                                String resultdm=String.valueOf(result);
+                                et_showview.setText(resultdm);
+
+                                return true;
+                            case R.id.m3:
+
+                                result=value/1000000;
+                                String resultm=String.valueOf(result);
+                                et_showview.setText(resultm);
+
+
+                                return true;
+                            default:
+                                return false;
+
+                        }
+                    }
+                });
+
+                popupMenu.show();
+
+
+                }
+        });
+        findViewById(R.id.btn_length).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popupMenu=new PopupMenu(MainActivity.this,view);
+                getMenuInflater().inflate(R.menu.length,popupMenu.getMenu());
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        String str=et_showview.getText().toString();
+                        double value=Double.valueOf(str);
+                        double result=0;
+                        switch (menuItem.getItemId()){
+                            case R.id.mm:
+                                result=value*10;
+                                String resultmm=String.valueOf(result);
+                                et_showview.setText(resultmm);
+
+                                return true;
+                            case R.id.cm:
+                                result=value;
+                                String resultcm=String.valueOf(result);
+                                et_showview.setText(resultcm);
+
+                                return true;
+                            case R.id.dm:
+                                result=value/10;
+                                String resultdm=String.valueOf(result);
+                                et_showview.setText(resultdm);
+
+                                return true;
+                            case R.id.m:
+
+                                result=value/100;
+                                String resultm=String.valueOf(result);
+                                et_showview.setText(resultm);
+
+
+                                return true;
+                            default:
+                                return false;
+
+                        }
+                    }
+                });
+
+                popupMenu.show();
+
+
+            }
+        });
+
 
         initView();
     }
@@ -65,6 +246,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_ac = (Button) findViewById(R.id.btn_clean);
         btn_del = (Button) findViewById(R.id.btn_delete);
 
+        btn_area =(Button)findViewById(R.id.btn_area);
+        btn_area =(Button)findViewById(R.id.btn_length);
+
 
         btn_0.setOnClickListener(this);
         btn_1.setOnClickListener(this);
@@ -87,6 +271,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_ac.setOnClickListener(this);
         btn_point.setOnClickListener(this);
         et_showview = (TextView) findViewById(R.id.msg);
+
+
+
     }
 
     @Override
@@ -134,11 +321,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 str+="9";
                 et_showview.setText(str);
                 break;
+
             case R.id.btn_chu:
-                if(str.length()!=0){
-                    str+="/";
-                    et_showview.setText(str);
-                }break;
+                if (str.length() != 0) {
+                    if (str.charAt(str.length() - 1) != '+') {
+                        if (str.charAt(str.length() - 1) != '-') {
+                            if (str.charAt(str.length() - 1) != '*') {
+                                if (str.charAt(str.length() - 1) != '/') {
+                                    str += "/";
+                                    et_showview.setText(str);
+                                }
+                            }
+                        }
+                    }
+                }
+                break;
+
+
 
             case R.id.btn_cheng:
                 if(str.length()!=0){
@@ -146,7 +345,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     et_showview.setText(str);
                 }break;
             case R.id.btn_dian:
-                if(str.length()!=0 && (str.charAt(str.length())>='0'&&str.charAt(str.length())<=9)){
+                if(str.length()!=0 ){
                     str+=".";
                     et_showview.setText(str);
                 }break;
@@ -172,12 +371,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_dengyu:
 
-                et_showview.setText(IndexInToDuffix.calc(Houzhui(str)));   //输入结束，转为逆波兰表达式
+                et_showview.setText(IndexInToDuffix.calc(Houzhui(str)));
                 break;
             case R.id.btn_delete:
                 str=str.substring(0,str.length()-1);
                 et_showview.setText(str);
-                //如果字符串长度大于等于1，就前删一个字符
+
                 break;
             case R.id.btn_clean:
                 str="";

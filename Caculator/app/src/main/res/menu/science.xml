@@ -12,7 +12,7 @@
 
     </item>
     <item
-        android:id="@+id/exit"
+        android:id="@+id/ret"
         android:title="RET" />
 </menu>
 
