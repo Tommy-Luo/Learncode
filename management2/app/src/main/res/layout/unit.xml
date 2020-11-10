@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="2"
+        android:rowCount="5"
+        android:orientation="horizontal">
+    <TextView
+        android:layout_width="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:id="@+id/date"
+        android:textSize="30sp"
+
+        />
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="2"
+        android:layout_rowWeight="1"
+        android:id="@+id/temperature"
+
+        android:textSize="20sp"
+        />
+    <TextView
+        android:layout_width="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:id="@+id/others"
+        android:textSize="20sp"
+        />
+    <TextView
+        android:layout_width="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:id="@+id/address"
+        android:textSize="20sp"
+        />
+
+    <TextView
+        android:id="@+id/id"
+        android:layout_width="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:paddingLeft="0dp"
+        android:paddingBottom="0dp"
+        android:textSize="0sp"
+        android:visibility="invisible" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:paddingLeft="0dp"
+            android:paddingBottom="0dp"
+            android:textSize="0sp"
+            android:visibility="invisible" />
+    </GridLayout>
+
+
+</LinearLayout>
