@@ -11,6 +11,12 @@ public class DBHelper extends SQLiteOpenHelper {
         super(context, name, factory, version);
 
     }
+
+    public DBHelper(Context context , String baseName , int version)
+    {
+        super(context , baseName , null , version);
+    }
+
     @Override
     public void onCreate(SQLiteDatabase db) {
         //创建表名

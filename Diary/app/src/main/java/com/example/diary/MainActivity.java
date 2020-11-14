@@ -1,19 +1,28 @@
 package com.example.diary;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.ContentResolver;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.PopupMenu;
 import android.widget.SimpleAdapter;
+import android.widget.SimpleCursorAdapter;
+import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,10 +45,19 @@ public class MainActivity extends Activity  {
     private SimpleAdapter listAdapter;
     private View view;
     private ListView listview,listview2;
-    private Button selBtn, addBtn, updBtn, delBtn;
+    private Button selBtn, addBtn, updBtn, delBtn,content;
     private Map<String, Object> item;
     private ContentValues selCV;
     private String selword,string;
+
+    private ContentResolver resolver ;
+    private static final String WORD = "word" ;
+    private static final String MEANING = "meaning" ;
+    private static final String EXAMPLE = "example" ;
+    private static final String AUTHORITY = "com.example.diarycontentprovider.provider" ;
+    private static final Uri ALL_URI = Uri.parse("content://" + AUTHORITY + "/wordinformation") ;
+    private static final Uri SINGLE_URI = Uri.parse("content://" + AUTHORITY + "/wordinformation") ;
+    private static final String _ID = "_id" ;
 
 
 
@@ -60,7 +78,7 @@ public class MainActivity extends Activity  {
         delBtn=(Button)findViewById(R.id.delete);
         updBtn=(Button)findViewById(R.id.update);
         selBtn=(Button)findViewById(R.id.search);
-
+        content=(Button)findViewById(R.id.CONTENT);
 
         addBtn.setOnClickListener(new Button.OnClickListener() {
             @Override
@@ -105,6 +123,57 @@ public class MainActivity extends Activity  {
             }
         });
 
+        content.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popupMenu=new PopupMenu(MainActivity.this,view);
+                getMenuInflater().inflate(R.menu.option,popupMenu.getMenu());
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+
+                        switch (menuItem.getItemId()){
+                            case R.id.INSERT_item:
+
+                                ContentValues values = new ContentValues() ;
+                                values.put(WORD , "turtle");
+                                values.put(MEANING , "乌龟" );
+                                values.put(EXAMPLE , "turle is good" );
+
+                                resolver.insert(ALL_URI , values ) ;
+                                initthecontent();
+                                return true;
+                            case R.id.DELETE_item:
+
+                                resolver.delete(ALL_URI , null , null) ;
+                                initthecontent();
+                                return true;
+                            case R.id.UPDATE_item:
+
+                                ContentValues values_new = new ContentValues() ;
+                                values_new.put(WORD , "big turtle");
+                                values_new.put(MEANING , "大乌龟！" );
+                                values_new.put(EXAMPLE , "big turtle is good！" );
+
+                                resolver.update(ALL_URI , values_new , new String("word = ?") , new String[]{"turtle"} ) ;
+                                initthecontent();
+
+                                return true;
+
+
+                            default:
+                                return false;
+
+                        }
+                    }
+                });
+
+                popupMenu.show();
+
+
+            }
+        });
+
         dbHelper = new DBHelper(this, DB_NAME, null, 1);
         db = dbHelper.getWritableDatabase();// 打开数据库
         data = new ArrayList<Map<String, Object>>();
@@ -129,7 +198,21 @@ public class MainActivity extends Activity  {
                theword();
               }
         });
+
+        resolver = getContentResolver() ;
+        initthecontent() ;
     }
+
+    private void initthecontent() {
+        Cursor cursor = resolver.query(ALL_URI , null , null ,null ,null) ;
+        SimpleCursorAdapter adapter = new SimpleCursorAdapter(this , R.layout.dict_adapt_listview,
+                cursor , new String[]{WORD , MEANING,EXAMPLE} ,new int[] {R.id.WordTetView , R.id.MeaningTetView,R.id.ExampleTetView}) ;
+        listview.setAdapter(adapter);
+        System.out.println("initthecontent") ;
+    }
+
+
+
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void theword() {

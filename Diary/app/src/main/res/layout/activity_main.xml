@@ -53,7 +53,7 @@
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:columnCount="5"
+            android:columnCount="6"
             android:rowCount="1"
             android:orientation="horizontal">
             <Button
@@ -63,7 +63,7 @@
                 android:layout_rowWeight="1"
                 android:id="@+id/submit"
                 android:text="SUBMIT"
-
+                android:background="@drawable/border"
                 />
             <Button
                 android:layout_width="0dp"
@@ -72,7 +72,7 @@
                 android:layout_rowWeight="1"
                 android:id="@+id/delete"
                 android:text="DELETE"
-
+                android:background="@drawable/border"
                 />
             <Button
                 android:layout_width="0dp"
@@ -81,7 +81,7 @@
                 android:layout_rowWeight="1"
                 android:id="@+id/update"
                 android:text="CHANGE"
-
+                android:background="@drawable/border"
                 />
             <Button
                 android:layout_width="0dp"
@@ -90,12 +90,21 @@
                 android:layout_rowWeight="1"
                 android:id="@+id/search"
                 android:text="SEARCH"
-
+                android:background="@drawable/border"
                 />
             <Button
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
-
+                android:layout_height="0dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:id="@+id/CONTENT"
+                android:text="CONTENT"
+                android:background="@drawable/border"
+                />
+            <Button
+                android:layout_width="0dp"
+                android:layout_rowWeight="1"
+                android:background="@drawable/border"
                 />
         </GridLayout>
     </TableLayout>
