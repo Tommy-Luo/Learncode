@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                 /*Uri uri = Uri.parse("content://com.example.words.provider/words");
                 System.out.println(uri.toString());*/
                 ContentValues values = new ContentValues();
-                values.put("word", "lqf");
+                values.put("word", "turtle");
                 System.out.println(uri);
                 Uri newUri = resolver.insert(uri, values);
                 if (newUri != null) {
@@ -73,9 +73,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 ContentValues values = new ContentValues();
-                values.put("word", "lqf1");
-                values.put("meaning", "Li Qi feng 1");
-                values.put("example", "李奇峰1");
+                values.put("word", "turtle");
+                values.put("meaning", "乌龟");
+                values.put("example", "turtle is good");
                 if (getContentResolver().update(uri, values, null, null) > 0) {
                     Toast.makeText(MainActivity.this, "update successfully!", Toast.LENGTH_LONG).show();
                 }
